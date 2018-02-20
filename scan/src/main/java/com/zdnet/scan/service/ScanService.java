@@ -11,15 +11,15 @@ import com.zdnet.scan.model.Scan;
 import com.zdnet.scan.service.common.BaseService;
 
 @Service
-public class ScanService{ //extends BaseService<Scan>{
+public class ScanService extends BaseService<Scan>{
 
 	@Resource
 	ScanDao scanDao;
-//	@Override
-//	public BaseDao<Scan> getRepository() {
-//		// TODO Auto-generated method stub
-//		return scanDao;
-//	}
+	@Override
+	public BaseDao<Scan> getRepository() {
+		// TODO Auto-generated method stub
+		return scanDao;
+	}
 	
 	public Page<Scan> getScanForPage(int currentPage,int pageSize)
 	{

@@ -8,13 +8,13 @@ import com.zdnet.scan.model.Page;
 import com.zdnet.scan.model.Scan;
 
 @Repository
-public class ScanDao { //extends BaseDao<Scan> {
+public class ScanDao extends BaseDao<Scan> {
 
 	public Page<Scan> getScanForPage(int currentPage,int pageSize)
 	{
 		DetachedCriteria detCri = DetachedCriteria.forClass(Scan.class);
-		//return getListForPage(currentPage,pageSize,detCri);
-		return null;
+		return getListForPage(currentPage,pageSize,detCri);
+		
 		
 	}
 }

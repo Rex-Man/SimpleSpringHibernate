@@ -44,6 +44,31 @@
             </props>
         </property>
     </bean>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />     
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="save*" propagation="REQUIRED"	rollback-for="java.lang.Exception" />     
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Exception" />     
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception" />     
+			<tx:method name="modify*" propagation="REQUIRED" rollback-for="java.lang.Exception" />     
+			<tx:method name="edit*" propagation="REQUIRED" rollback-for="java.lang.Exception" /> 
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />            
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />  
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />           
+			<tx:method name="search*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS" />              
+		</tx:attributes>
+	</tx:advice>
+    
+	
+	<aop:config>
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(public * com.oocl.mbc.ooclitewebservice.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" />
+	</aop:config>
+    
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
         <property name="sessionFactory" ref="sessionFactory"/>  
