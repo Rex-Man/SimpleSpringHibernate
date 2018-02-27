@@ -25,6 +25,9 @@ public class ScanService extends BaseService<Scan>{
 	{
 		return scanDao.getScanForPage(currentPage, pageSize);
 	}
-	
+	public boolean getScanByScanCode(String scanCode)
+	{
+		return scanDao.getScanByScanCode(scanCode);
+	}
 
 }

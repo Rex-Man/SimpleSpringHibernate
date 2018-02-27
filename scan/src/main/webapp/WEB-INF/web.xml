@@ -3,10 +3,10 @@
     xmlns="http://java.sun.com/xml/ns/javaee"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     id="schedule-console" version="3.0">
-    <display-name>OOCLiteService</display-name>
+    <display-name>scan</display-name>
    <context-param>
         <param-name>webAppRootKey</param-name>
-        <param-value>OOCLliteWebService.root</param-value>
+        <param-value>scan.root</param-value>
    </context-param>
    <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -30,7 +30,7 @@
 		<filter-name>CharacterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-<filter>  
+    <filter>  
 	    <filter-name>openSessionInViewFilter</filter-name>  
 	    <filter-class>  
 	        org.springframework.orm.hibernate4.support.OpenSessionInViewFilter  
@@ -51,6 +51,6 @@
 	 </servlet>
 	 <servlet-mapping>
 		  <servlet-name>dispatcher</servlet-name>
-		  <url-pattern>/</url-pattern>
+		  <url-pattern>/*</url-pattern>
 	 </servlet-mapping>
 </web-app>
